@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Trung Do/StudioProjects/MyApplication1/app/src/main/res/drawable/selector.xml" value="0.196" />
+        <entry key="..\:/Users/Trung Do/StudioProjects/MyApplication1/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Trung Do/StudioProjects/MyApplication1/app/src/main/res/layout/left_bar_navigator.xml" value="0.25" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/drawable/coner_bottom.xml" value="0.3185" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/drawable/coner_round.xml" value="0.3415" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/drawable/list_coner.xml" value="0.173" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/drawable/selector.xml" value="0.2545" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/activity_main.xml" value="0.2595108695652174" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/fragment_monitor.xml" value="0.32472826086956524" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/left_bar_navigator.xml" value="0.32472826086956524" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/monitoring.xml" value="0.32472826086956524" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/overlay_layout.xml" value="0.28396739130434784" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/setting.xml" value="0.32472826086956524" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/tire_joint.xml" value="0.32472826086956524" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/tire_monitor.xml" value="0.25" />
+        <entry key="..\:/code_dao/android_project/MyApplication1/app/src/main/res/layout/tire_rotation.xml" value="0.32472826086956524" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tire System</string>
+    <string name="giam_sat">Giám sát</string>
+    <string name="khop_lop">Khớp lốp</string>
+    <string name="dao_lop">Đảo lốp</string>
+    <string name="cai_dat">Cài đặt</string>
+    <string name="am_thanh">Âm thanh</string>
+</resources>
