@@ -13,8 +13,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication1.UI.FloatingViewService;
 import com.example.myapplication1.UI.fragment.TireJointFragment;
@@ -33,13 +35,29 @@ public class MainActivity extends AppCompatActivity {
     TextView tCaiDat;
     TextView tAmThanh;
 
+    public static MainActivity instance;
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
+
     SensorEventListener pressureSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
             float[] values = sensorEvent.values;
             System.out.println(sensorEvent.values[0]);
             TireMonitorFragment monitor = TireMonitorFragment.getMonitor();
-            monitor.setPressure(String.valueOf(values[0]));
+            monitor.valuesPress= values[0];
+            if(values[0]<200) {
+                TireSystem.showAlertPressureLow();
+            }
+            else if (values[0] > 1000) {
+                TireSystem.showAlertPressureHigh();
+            }
+            else {
+                TireSystem.isPass = false;
+            }
+            monitor.setPressure(values[0]);
         }
 
         @Override
@@ -54,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
             float[] values = sensorEvent.values;
             System.out.println(sensorEvent.values[0]);
             TireMonitorFragment monitor = TireMonitorFragment.getMonitor();
-            monitor.setTemperature(String.valueOf(values[0]));
+            monitor.valuesTemp= values[0];
+            monitor.setTemperature(values[0]);
         }
 
         @Override
@@ -73,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startService(new Intent(MainActivity.this, FloatingViewService.class));
+        instance = this;
         tGiamSat = findViewById(R.id.tvGiamSat);
         tGiamSat.setBackgroundColor(R.color.onclick);
         tKhopLop = findViewById(R.id.tvKhopLop);
@@ -187,4 +207,6 @@ public class MainActivity extends AppCompatActivity {
         Sensor sensor = TireSystem.getInstance().getPressureSensor();
         manager.unregisterListener(pressureSensorEventListener);
     }
+
+
 }

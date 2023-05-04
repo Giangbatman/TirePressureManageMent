@@ -10,4 +10,5 @@
     <color name="defaultColor">#141C22</color>
     <color name="onclick">#00E0EE</color>
     <color name="text">#FFFFFFFF</color>
+    <color name="orange">#FF5722</color>
 </resources>

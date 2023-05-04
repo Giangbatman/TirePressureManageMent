@@ -27,4 +27,5 @@ public class TireJointFragment extends Fragment {
         return inflater.inflate(R.layout.tire_joint, container, false);
     }
 
+
 }

@@ -5,4 +5,9 @@
     <string name="dao_lop">Đảo lốp</string>
     <string name="cai_dat">Cài đặt</string>
     <string name="am_thanh">Âm thanh</string>
+    <string name="bao_dong_duoi">Báo động dưới:</string>
+    <string name="bao_dong_tren">Báo động trên:</string>
+    <string name="yes">Đồng ý</string>
+    <string name="no">Không đồng ý</string>
+    <string name="cancel">Hủy</string>
 </resources>
