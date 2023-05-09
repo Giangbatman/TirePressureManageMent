@@ -11,4 +11,5 @@
     <color name="onclick">#00E0EE</color>
     <color name="text">#FFFFFFFF</color>
     <color name="orange">#FF5722</color>
+    <color name="app">#196181</color>
 </resources>

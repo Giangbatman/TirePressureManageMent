@@ -2,6 +2,7 @@ package com.example.myapplication1.UI.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,16 +61,29 @@ public class TireMonitorFragment extends Fragment {
         nhietdolopsaubenphai = view.findViewById(R.id.nhietdolopsaubenphai);
         System.out.println("-------------2");
 
-        setPressure(valuesPress);
+        reset();
         setTemperature(valuesTemp);
         return view;
     }
 
     public void reset() {
-        apsuatlopsaubentrai.setText("0.0 Bar");
-        apsuatlopsaubenphai.setText("0.0 Bar");
-        apsuatloptruocbenphai.setText("0.0 Bar");
-        apsuatloptruocbentrai.setText("0.0 Bar");
+        TireSystem sys = TireSystem.getInstance();
+        for (String key : sys.mapSensor.keySet()) {
+            Sensor sensor = sys.mapSensor.get(key);
+            if (sensor != null) {
+                if (sensor.equals(sys.getPressureSensor1()))
+                    setPressure(sys.getSensorVal1(), key);
+                else if (sensor.equals(sys.getPressureSensor2()))
+                    setPressure(sys.getSensorVal2(), key);
+                else if (sensor.equals(sys.getPressureSensor3()))
+                    setPressure(sys.getSensorVal3(), key);
+                else setPressure(sys.getSensorVal4(), key);
+            }
+        }
+//        setPressure(sys.getSensorVal1(), TireSystem.TRAITRUOC);
+//        setPressure(sys.getSensorVal2(), TireSystem.TRAISAU);
+//        setPressure(sys.getSensorVal3(), TireSystem.PHAITRUOC);
+//        setPressure(sys.getSensorVal4(), TireSystem.PHAISAU);
 
         nhietdolopsaubenphai.setText("-49 \u2109C");
         nhietdolopsaubentrai.setText("-49 \u2109C");
@@ -78,12 +92,27 @@ public class TireMonitorFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    public void setPressure(double press) {
+    public void setPressure(double press, String lop) {
         press = transferPressValues(TireSystem.getInstance().pressureDegree, press);
-        apsuatlopsaubentrai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
-        apsuatlopsaubenphai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
-        apsuatloptruocbenphai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
-        apsuatloptruocbentrai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
+        switch (lop) {
+            case TireSystem.TRAITRUOC: {
+                apsuatloptruocbentrai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
+                break;
+            }
+            case TireSystem.PHAITRUOC: {
+                apsuatloptruocbenphai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
+                break;
+            }
+            case TireSystem.TRAISAU: {
+                apsuatlopsaubentrai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
+                break;
+            }
+            case TireSystem.PHAISAU: {
+                apsuatlopsaubenphai.setText(String.valueOf(press) + TireSystem.getInstance().pressureDegree);
+                break;
+            }
+            default:
+        }
     }
 
     public void setTemperature(double temperature) {

@@ -1,20 +1,17 @@
 package com.example.myapplication1.UI.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.myapplication1.MainActivity;
 import com.example.myapplication1.R;
 import com.example.myapplication1.system.TireSystem;
 
@@ -32,10 +29,6 @@ public class TireSettingFragment extends Fragment  {
     private SeekBar seekBar1;
     private SeekBar seekBar2;
 
-
-
-    static int bar1_val = 50;
-    static int bar2_val = 50;
 
     private static TireSettingFragment settingFragment = null;
 
@@ -64,10 +57,10 @@ public class TireSettingFragment extends Fragment  {
         seekBar1 = view.findViewById(R.id.seekBar1);
         seekBar2 = view.findViewById(R.id.seekBar2);
 
-        seekBar1.setProgress(bar1_val);
-        seekBar2.setProgress(bar2_val);
-        bao_dong_tren.setText(getString(R.string.bao_dong_tren) + bar1_val);
-        bao_dong_duoi.setText(getString(R.string.bao_dong_duoi) + bar2_val);
+        seekBar1.setProgress(TireSystem.apSuatTren);
+        seekBar2.setProgress(TireSystem.apSuatDuoi);
+        bao_dong_tren.setText(getString(R.string.bao_dong_tren) + TireSystem.apSuatTren);
+        bao_dong_duoi.setText(getString(R.string.bao_dong_duoi) + TireSystem.apSuatDuoi);
 
         resetColor();
 
@@ -85,7 +78,9 @@ public class TireSettingFragment extends Fragment  {
                 TireSystem.getInstance().pressureDegree = TireSystem.PSI;
                 resetColor();
                 TireMonitorFragment.getMonitor().presRuler ="PSI";
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    TireSystem.getInstance().playWarningSound(getContext());
+                }
             }
         });
         kpa.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +145,7 @@ public class TireSettingFragment extends Fragment  {
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 bao_dong_tren.setText(getString(R.string.bao_dong_tren) + progressChangedValue);
-                bar1_val = progressChangedValue;
+                TireSystem.apSuatTren = progressChangedValue;
 //                System.out.println(progressChangedValue);
             }
         });
@@ -170,7 +165,7 @@ public class TireSettingFragment extends Fragment  {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 bao_dong_duoi.setText(getString(R.string.bao_dong_duoi) + progressChangedValue);
-                bar2_val = progressChangedValue;
+                TireSystem.apSuatDuoi = progressChangedValue;
             }
         });
 
@@ -210,7 +205,8 @@ public class TireSettingFragment extends Fragment  {
             f.setBackground(getResources().getDrawable(R.drawable.corner_setting_onclick));
         }
 
-        monitorFragment.setPressure(monitorFragment.valuesPress);
+//        monitorFragment.setPressure(monitorFragment.valuesPress);
+        monitorFragment.reset();
         System.out.println(monitorFragment.valuesTemp);
         monitorFragment.setTemperature(monitorFragment.valuesTemp);
     }

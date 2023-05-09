@@ -38,6 +38,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:drawablePadding="2dp"
+                android:drawableStart="@drawable/ic_baseline_monitor"
                 tools:ignore="NestedWeights" />
 
             <TextView
@@ -52,6 +54,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_joint"
                 tools:ignore="NestedWeights" />
 
             <TextView
@@ -66,6 +70,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_crop_rotate"
                 tools:ignore="NestedWeights" />
 
             <TextView
@@ -75,6 +81,8 @@
                 android:layout_weight="1"
                 android:background="@color/defaultColor"
                 android:clickable="true"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_settings"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/cai_dat"
                 android:textAlignment="center"
@@ -89,6 +97,8 @@
                 android:layout_weight="1"
                 android:background="@color/defaultColor"
                 android:clickable="true"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_baseline_volume_off"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/am_thanh"
                 android:textAlignment="center"
