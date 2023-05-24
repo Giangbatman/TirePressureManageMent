@@ -119,7 +119,11 @@ public class TireRotationFragment extends Fragment {
     }
 
     public void rotateSensor(TextView tv1, TextView tv2) {
-
+        if(tv1 == tv2) 
+        {
+            resetColor();
+            return;
+        }
         new AlertDialog.Builder(MainActivity.getInstance())
                 .setTitle("Đảo lốp")
                 .setMessage("Xác nhận đảo cảm biến lốp " + tv1.getText() + " với lốp " + tv2.getText() + "?")
